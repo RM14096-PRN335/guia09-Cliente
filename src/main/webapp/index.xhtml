@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+         <h:form id="mainfrm">
+            <p:panel>
+                <h1>Busqueda de Tipo Seccion</h1>
+                <h:outputText value="Ingrese el titulo del Tipo Seccion a buscar: "/>
+                <p:inputText id="inputTipoSeccion" value="#{clienteTipoSeccion.rolMatch}" >
+                    <p:ajax event="keyup" process="inputTipoSeccion"  update="pnlfiltro" listener="#{clienteTipoSeccion.init()}"    />
+                </p:inputText>
+                
+                <br/>
+                
+                <p:panel id="pnlfiltro">
+                    <h:outputText value="Tipo Seccion encontrados "/>
+                    <p:dataList id="matchlist" value="#{clienteTipoSeccion.salida}" var="lista" >
+                        <h:outputText id="out" value="#{lista.nombre}"/>
+                    </p:dataList> 
+                </p:panel>
+            </p:panel>
+        </h:form>
+</h:body>
+</html>
+
